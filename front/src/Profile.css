@@ -1,0 +1,547 @@
+.menu-box {
+  border: 2px solid #F48516;
+  border-radius: 4px;
+  padding: 1rem;
+  cursor: pointer;
+  white-space: nowrap;    
+  overflow: hidden;       
+  text-overflow: ellipsis;
+}
+.menu-box-active {
+  background-color: #F48516;
+  color: #fff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: rgb(139, 72, 72);
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.avatar-section {
+  background: rgb(255, 255, 255);
+  padding: 20px;
+  margin-left : 30px;
+  border-radius: 12px;
+  border: 2px solid black;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-preview {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.avatar-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.option-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.option-group select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+
+.menu-box:hover {
+  background-color: #F48516D2;
+  color: #fff;
+}
+
+.custom-input {
+  border: 2px solid #F48516;
+  padding-right: 40px;
+}
+
+.footer-link{
+  cursor: pointer;
+}
+
+.customization-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.option-category {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.option-category h3 {
+  color: black;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.options-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.color-option {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.color-option:hover {
+  transform: scale(1.15) rotate(5deg);
+  z-index: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.color-option.selected {
+  border-color: #4FE9DE;
+  transform: scale(1.1);
+}
+
+.style-option {
+  padding: 0.8rem;
+  background: #2a4e68;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.style-option.selected {
+  background: #4FE9DE;
+  color: #1a1a1a;
+}
+
+.style-option:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.887);
+  background: #2a4e68;
+  transform: translateY(-2px);
+}
+
+.save-button {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 1rem 3rem;
+  background: linear-gradient(45deg, #4FE9DE, #3B7088);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.category-menu {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.menu-btn {
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 20px;
+  background: #2a4e68;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.menu-btn.active {
+  background: #4FE9DE;
+  color: #1a1a1a;
+  transform: scale(1.05);
+}
+
+.menu-btn:hover {
+  transform: scale(1.05);
+}
+
+.category-content {
+  min-height: 200px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+.avatar-customizer {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.avatar-preview {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.avatar-preview img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.category-scroller {
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.category-tabs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+
+.tab {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  background: #2a4e68;
+  color: white;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  background: #4FE9DE;
+  color: #1a1a1a;
+  transform: scale(1.05);
+}
+
+.options-panel {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255,0.95);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 -8px 30px rgba(0,0,0,0.1);
+  margin: 0 1rem;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  gap: 1rem;
+}
+
+.style-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+/* Conteneur de la grille */
+.coiffure-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
+  gap: 12px; /* Espacement entre les éléments */
+  max-height: 250px; /* Hauteur pour 3 lignes (ajustez selon votre design) */
+  overflow-y: auto; /* Scroll vertical si besoin */
+  padding-right: 8px; /* Évite le chevauchement avec la scrollbar */
+}
+
+/* Style de la scrollbar (optionnel) */
+.coiffure-grid::-webkit-scrollbar {
+  width: 6px;
+}
+
+.coiffure-grid::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 4px;
+}
+
+/* Par défaut, on suppose que .sidebar-panel est “hors écran” sur mobile */
+.sidebar-panel {
+  position: fixed;         /* On le fixe pour qu’il glisse par-dessus la page */
+  top: 60px;
+  left: 0;
+  width: 220px;            /* Largeur du panel */
+  height: 100vh;           /* Prend toute la hauteur */
+  background: #fff;        /* Fond blanc (ou ce que vous voulez) */
+  border-right: 2px solid #ccc;
+  transform: translateX(-100%); /* Caché à gauche */
+  transition: transform 0.3s ease;
+  z-index: 999;            /* Au-dessus du contenu */
+  padding: 1rem;
+}
+
+.sidebar-panel .menu-box:first-child {
+  margin-top: 2rem; /* Espace de 2rem pour le premier bouton seulement */
+}
+
+
+/* Quand isMenuOpen = true => on ajoute .open => slide-in */
+.sidebar-panel.open {
+  transform: translateX(0);
+}
+
+/* Le bouton “menu-toggle” en mobile */
+.menu-toggle {
+  display: block;
+  margin-bottom: 1rem;
+  background: none;
+  border: none;
+  color: #000; /* ou autre */
+  cursor: pointer;
+  /* z-index: 1000 si besoin d’être au-dessus du panel */
+}
+
+/* Sur desktop (≥ 768px) */
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none; /* Cache le bouton hamburger */
+  }
+  
+  .sidebar-panel {
+    position: fixed; /* Maintient le menu fixe */
+    left: 0;
+    top: 60px;
+    height: calc(100vh - 60px);
+    width: 300px;
+    transform: none; /* Annule la translation mobile */
+    border-right: 2px solid #ccc;
+    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.05);
+    overflow-y: auto;
+  }
+
+  /* Contenu principal décalé */
+  .col-md-9 {
+    margin-left: 220px;
+    width: calc(100% - 220px);
+    padding: 2rem;
+  }
+
+  /* Supprime l'espace réservé au premier élément */
+  .sidebar-panel .menu-box:first-child {
+    margin-top: 1rem;
+  }
+}
+
+/* Conservation du comportement mobile */
+@media (max-width: 767px) {
+  .sidebar-panel {
+    transform: translateX(-100%);
+  }
+  
+  .sidebar-panel.open {
+    transform: translateX(0);
+  }
+}
+
+.items-grid {
+  /* Grille à 3 colonnes */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 16px;
+  
+  /* Limiter la hauteur et activer le scroll vertical */
+  max-height: 300px; 
+  overflow-y: auto; 
+  margin-top: 1rem;
+  padding-right: 8px; /* Pour laisser la place au scrollbar */
+}
+
+/* Carte contenant le bouton et le bouton de déblocage */
+.item-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+/* Bouton principal */
+.item-button {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 6px;
+  transition: background-color 0.3s;
+}
+
+/* États débloqué/verrouillé */
+.item-button.unlocked {
+  background-color: #2a4e68; /* bleu nuit */
+  color: #fff;
+}
+.item-button.unlocked:hover {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.699);
+}
+.item-button.locked {
+  background-color: #bdc3c7; /* gris clair */
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* État sélectionné (coiffure active) */
+.item-button.selected {
+  background: #4FE9DE;
+  color: black;
+}
+
+/* Icône cadenas */
+.lock-icon {
+  margin-left: 4px;
+}
+
+/* Bouton pour débloquer */
+.unlock-button {
+  background-color: #e67e22; /* orange */
+  color: #fff;
+  border: none;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+.unlock-button:hover {
+  background-color: #d35400;
+}
+
+/* Grille à 3 colonnes, avec un scroll vertical si la liste est trop longue */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-height: 240px; /* Ajuste la hauteur maximale selon tes préférences */
+  overflow-y: auto;  
+  margin-top: 1rem;
+  padding-right: 8px; /* Laisse un peu d'espace pour le scrollbar */
+}
+
+/* Chaque case contient le bouton principal + éventuellement le bouton de déblocage */
+.color-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Bouton principal qui affiche la couleur */
+.color-button {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  position: relative;
+  transition: opacity 0.3s, box-shadow 0.3s;
+  font-weight: bold;
+  color: #fff; /* On force un texte blanc pour la lisibilité */
+  text-transform: uppercase;
+}
+
+/* Si la couleur est débloquée */
+.color-button.unlocked:hover {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.699);
+}
+
+/* Si la couleur est verrouillée */
+.color-button.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Couleur sélectionnée (hairColor === clr) */
+.color-button.selected {
+  outline: 3px solid #ff6600; /* Contour orange */
+}
+
+/* Icône cadenas */
+.lock-icon {
+  margin-left: 4px;
+}
+
+/* Bouton de déblocage */
+.unlock-button {
+  background-color: #e67e22; /* Orange */
+  color: #fff;
+  border: none;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+  width: 100%;
+  text-align: center;
+}
+.unlock-button:hover {
+  background-color: #d35400;
+}
+
+
