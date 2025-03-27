@@ -27,7 +27,7 @@ function init(db){
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'bellearnaude@gmail.com', 
+      user: 'ryangermain.2004@gmail.com', 
       pass: 'fwhv yqui iqjp sppb' 
     }
   });
@@ -92,7 +92,7 @@ const validatePassword = (password) => {
   
     try {
       await transporter.sendMail({
-        from: 'bellearnaude@gmail.com',
+        from: 'ryangermain.2004@gmail.com',
         to: email,
         subject: 'Code de vérification',
         text: `Votre code de vérification est : ${verificationCode}`

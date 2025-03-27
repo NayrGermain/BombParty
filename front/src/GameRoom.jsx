@@ -5,7 +5,6 @@ import "./Profile.css";
 import CustomSliderWithTooltip from './CustomSliderWithTooltip.jsx';
 import axios from 'axios';
 import RulesModal from './RulesModal';
-import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const GameRoom = ({ setCurrentPage}) => {  // <-- Ajout de setCurrentPage
@@ -31,8 +30,8 @@ const GameRoom = ({ setCurrentPage}) => {  // <-- Ajout de setCurrentPage
     // Vérifier si une session est déjà ouverte
     const checkSession = async () => {
         try {
-            const response = await axios.get('/api/session');
-            const user = await axios.get('/api/users/detail');
+            const response = await axios.get('https://bombpartyback-8efp.onrender.com/api/session');
+            const user = await axios.get('https://bombpartyback-8efp.onrender.com/api/users/detail');
 
             console.log("find the user according to the session id : ");
             setUserid(response.data.userid);
@@ -45,8 +44,8 @@ const GameRoom = ({ setCurrentPage}) => {  // <-- Ajout de setCurrentPage
     async function fetchAccount() {
         try {
           const [response, sessionRes] = await Promise.all([
-            axios.get('/api/users/all'),
-            axios.get('/api/session')
+            axios.get('https://bombpartyback-8efp.onrender.com/api/users/all'),
+            axios.get('https://bombpartyback-8efp.onrender.com/api/session')
           ]);
           
           const userid = sessionRes.data.userid;
@@ -263,7 +262,7 @@ const GameRoom = ({ setCurrentPage}) => {  // <-- Ajout de setCurrentPage
           await Promise.all(users.map(async (user) => {
             const username = user.id;
               try {
-                  const response = await axios.get('/api/get-avatar-by-username', {
+                  const response = await axios.get('https://bombpartyback-8efp.onrender.com/api/get-avatar-by-username', {
                       params: { username: username.trim() } // Normaliser le nom
                   });
                   if (response.data?.avatar) {

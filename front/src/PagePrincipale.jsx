@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 //Connexion avec le back
-axios.defaults.baseURL = 'https://bombpartyy.duckdns.org';
+axios.defaults.baseURL = 'https://bombparty-8efp.onrender.com/';
 axios.defaults.withCredentials = true;
 
 //Page qui permet d'être sur la page principale
