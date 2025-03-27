@@ -7,7 +7,7 @@ class Rooms {
    // Crée un une room
    async createRoom(roomName, user) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Rooms"); //Accès au collection Compte
+      const col1 = this.db.useDb("BombPartyDB").collection("rooms"); //Accès au collection Compte
       await col1.insertOne({
         id: roomName,
         users: [{ id: user, lives: 3 }] // user est maintenant un objet avec un champ `lives`
@@ -20,7 +20,7 @@ class Rooms {
 
   async deleteRoom(roomName) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Rooms");
+      const col1 = this.db.useDb("BombPartyDB").collection("rooms");
 
       // Vérifie si lla room existe
       const room = await col1.findOne({ id: roomName });
@@ -47,7 +47,7 @@ class Rooms {
   // Récupère la room d'un utilisateur
   async getRoomName(userId) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Rooms");
+      const col1 = this.db.useDb("BombPartyDB").collection("rooms");
   
       // Chercher une room où l'userId est présent dans le tableau "users"
       const room = await col1.findOne({ users: userId });
@@ -62,7 +62,7 @@ class Rooms {
   
   async getUsersInRoom(roomname) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Rooms");
+      const col1 = this.db.useDb("BombPartyDB").collection("rooms");
       const room = await col1.findOne({id:roomname});   
       console.log(room);
       if(room == null) {
@@ -80,7 +80,7 @@ class Rooms {
       console.log("User invalide, on n'ajoute pas.");
       return; // on arrête la fonction
     }
-    const col1 = this.db.useDb("ProjetAWS").collection("Rooms");
+    const col1 = this.db.useDb("BombPartyDB").collection("rooms");
     await col1.updateOne(
       { id: roomName },
       { 
@@ -94,18 +94,18 @@ class Rooms {
 
   async getAllRooms() {
     try {
-        // 🔥 Utilisation directe de `this.db.useDb("ProjetAWS")`
+        // 🔥 Utilisation directe de `this.db.useDb("BombPartyDB")`
         const db = this.db.db; 
 
-        // Vérification explicite de la collection "Rooms"
-        const collectionExists = await db.listCollections({ name: "Rooms" }).toArray();
+        // Vérification explicite de la collection "rooms"
+        const collectionExists = await db.listCollections({ name: "rooms" }).toArray();
         
         if (!collectionExists) {
             console.log("❌ Aucune collection 'Rooms' trouvée");
             return [];
         }
 
-        const rooms = await db.collection("Rooms").find({}).toArray();
+        const rooms = await db.collection("rooms").find({}).toArray();
 
         // 🔥 Validation des données pour éviter les erreurs
         return rooms.map(room => {
@@ -126,7 +126,7 @@ class Rooms {
   }
   async getWinner(roomName) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Rooms");
+      const col1 = this.db.useDb("BombPartyDB").collection("rooms");
       const room = await col1.findOne({ id: roomName });
       console.log("Nom de la room getwinner", roomName)
       if (!room) {
@@ -151,7 +151,7 @@ class Rooms {
 
   async nextPlayer(roomName, currentUserId) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Rooms");
+      const col1 = this.db.useDb("BombPartyDB").collection("rooms");
       const room = await col1.findOne({ id: roomName });
   
       if (!room) {
@@ -196,7 +196,7 @@ class Rooms {
   }
 
   async exist(roomname) {
-    const col1 = this.db.useDb("ProjetAWS").collection("Rooms");
+    const col1 = this.db.useDb("BombPartyDB").collection("rooms");
     const room = await col1.findOne({ id: roomname });
     console.log("Voici la room :",room)
     return room;
@@ -206,7 +206,7 @@ class Rooms {
 
   async removeUserFromRoom(roomName, user) {
     try {
-      const col = this.db.useDb("ProjetAWS").collection("Rooms");
+      const col = this.db.useDb("BombPartyDB").collection("rooms");
       
       // Vérifier que la room existe
       const roomExists = await col.findOne({ id: roomName });
@@ -232,7 +232,7 @@ class Rooms {
   
   //Modifie les vies au démarrrage de la partie
   async changeLives(roomName,lives) {
-    const col1 = this.db.useDb("ProjetAWS").collection("Rooms");
+    const col1 = this.db.useDb("BombPartyDB").collection("rooms");
     
     try {
       // Mettre à jour les vies de l'utilisateur dans la room
@@ -257,7 +257,7 @@ class Rooms {
    async loseLife(roomName, userId) {
     try {
      
-      const col1 = this.db.useDb("ProjetAWS").collection("Rooms");
+      const col1 = this.db.useDb("BombPartyDB").collection("rooms");
   
       //la room
       const room = await col1.findOne({ id: roomName });
@@ -287,7 +287,7 @@ class Rooms {
 
   async checkGameOver(roomName) {
     try {
-        const col1 = this.db.useDb("ProjetAWS").collection("Rooms");
+        const col1 = this.db.useDb("BombPartyDB").collection("rooms");
         const room = await col1.findOne({ id: roomName });
         if (!room) {
           console.log("Room non trouvée");

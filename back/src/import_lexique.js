@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 async function importLexique() {
     try {
-        const db = mongoose.connection.useDb("ProjetAWS");
+        const db = mongoose.connection.useDb("BombPartyDB");
         const collection = db.collection("mots");
 
 

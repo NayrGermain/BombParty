@@ -8,7 +8,7 @@ class Users {
   // Crée un compte utilisateur
   async creerCompte(username, email, mdp1, mdp2) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Compte");
+      const col1 = this.db.useDb("BombPartyDB").collection("users");
       await col1.insertOne({
          username: username,
          _id: email,
@@ -53,7 +53,7 @@ class Users {
     // Vérifie si un email existe déjà dans la bdd
     async existUsername(pseudo) {
       try {
-        const col1 = this.db.useDb("ProjetAWS").collection("Compte");
+        const col1 = this.db.useDb("BombPartyDB").collection("users");
         const query = { username: { $eq: pseudo } }; // Requête Préparées pour contrer les injections noSQL
         const res = await col1.findOne(query);
   
@@ -71,7 +71,7 @@ class Users {
   // Vérifie si un email existe déjà dans la bdd
   async exist(email) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Compte");
+      const col1 = this.db.useDb("BombPartyDB").collection("users");
       const query = { _id: { $eq: email } }; // Requête Préparées pour contrer les injections noSQL
       const res = await col1.findOne(query);
 
@@ -90,7 +90,7 @@ class Users {
   // Vérifie si le mot de passe correspond au mot de passe stocké en bdd
   async checkPassword(login, password) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Compte");
+      const col1 = this.db.useDb("BombPartyDB").collection("users");
       const user = await col1.findOne({ _id: { $eq: login } });
       
       if (user) {
@@ -113,7 +113,7 @@ class Users {
   //Récupère un utilisateur via son username
   async getUser(pseudo) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Compte");
+      const col1 = this.db.useDb("BombPartyDB").collection("users");
       const user = await col1.findOne({ username: pseudo });
       return user;
     } catch (err) {
@@ -124,7 +124,7 @@ class Users {
     //Récupère un utilisateur via son email
   async getEmail(email) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Compte");
+      const col1 = this.db.useDb("BombPartyDB").collection("users");
       const query = { _id: { $eq: email } }; // Requête Préparées pour contrer les injections noSQL
       const user = await col1.findOne(query); 
       return user;
@@ -136,7 +136,7 @@ class Users {
   // Récupère tous les utilisateurs
   async getAllUsers() {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Compte");
+      const col1 = this.db.useDb("BombPartyDB").collection("users");
       const account = await col1.find({}).toArray();
       return account;
     } catch (err) {
@@ -147,7 +147,7 @@ class Users {
   // Met à jour le nom d'un utilisateur dans la bdd
   async updateUsername(email, newUsername) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Rooms");
+      const col1 = this.db.useDb("BombPartyDB").collection("Rooms");
       const result = await col1.updateOne(
         { _id: email },
         { $set: { username: newUsername } }
@@ -165,7 +165,7 @@ class Users {
   // Met à jour le mot de passe d'un utilisateur dans la bdd
   async updatePassword(email, newPassword) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Compte");
+      const col1 = this.db.useDb("BombPartyDB").collection("users");
       const result = await col1.updateOne(
         { _id: email },
         { $set: { password: newPassword } }
@@ -183,7 +183,7 @@ class Users {
   // Récupère le nombre de pièces d'un utilisateur via son email
   async getCoins(email) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Compte");
+      const col1 = this.db.useDb("BombPartyDB").collection("users");
       const user = await col1.findOne({ _id: email });
       if (user) {
         return user.coins;
@@ -197,7 +197,7 @@ class Users {
   // Met à jour le nombre de pièces d'un utilisateur
   async updateCoins(email, newCoinCount) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Compte");
+      const col1 = this.db.useDb("BombPartyDB").collection("users");
       const result = await col1.updateOne(
         { _id: email },
         { $set: { coins: newCoinCount } }
@@ -214,7 +214,7 @@ class Users {
   // Ajoute ou soustrait des pièces d'un utilisateur
   async modifyCoins(email, amount) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Compte");
+      const col1 = this.db.useDb("BombPartyDB").collection("users");
       const result = await col1.updateOne(
         { _id: email },
         { $inc: { coins: amount } } // Utilisation de $inc pour incrémenter ou décrémenter
@@ -231,7 +231,7 @@ class Users {
   // Supprime un utilisateur
   async supprimerCompte(email, password) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Compte");
+      const col1 = this.db.useDb("BombPartyDB").collection("users");
 
       // Vérifie si l'utilisateur existe
       const user = await col1.findOne({ _id: { $eq: email } });
@@ -264,7 +264,7 @@ class Users {
 
   async saveAvatar(email, avatar, avatarSettings) {
     try {
-      const col1 = this.db.useDb("ProjetAWS").collection("Compte");
+      const col1 = this.db.useDb("BombPartyDB").collection("users");
   
       // Met à jour l'avatar de l'utilisateur dans la base de données
       const result = await col1.updateOne(
@@ -284,7 +284,7 @@ class Users {
   async unlockItem(email, category, item, cost) {
     try {
       // Connexion à la collection
-      const col1 = this.db.useDb("ProjetAWS").collection("Compte");
+      const col1 = this.db.useDb("BombPartyDB").collection("users");
   
       // Récupérer l'utilisateur
       const user = await col1.findOne({ _id: email });
