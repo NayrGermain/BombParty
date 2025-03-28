@@ -16,7 +16,7 @@ const { MongoClient } = require("mongodb");
 const uri = "mongodb://127.0.0.1:27017";
 const client = new MongoClient(uri);
 */
-axios.defaults.baseURL = 'https://bombparty-8efp.onrender.com/';
+axios.defaults.baseURL = 'https://bombparty-8efp.onrender.com';
 axios.defaults.withCredentials = true;
 const app = express();
 const port = 4001; // Port Express
@@ -29,8 +29,8 @@ const SESSION_SECRET = process.env.SESSION_SECRET || crypto.randomBytes(64).toSt
 const SESSION_MAX_AGE = process.env.SESSION_MAX_AGE ? parseInt(process.env.SESSION_MAX_AGE) : 1000 * 60 * 30;
 const allowedOrigins = [
   "http://localhost:3000", // Dev local
-  "https://bombparty-8efp.onrender.com/", //URL Amplify
-  "https://bombpartyback-8efp.onrender.com/"  // Backend EC2
+  "https://bombparty-8efp.onrender.com", //URL Amplify
+  "https://bombpartyback-8efp.onrender.com"  // Backend EC2
 ];
 
 if (!MONGO_URI) {
