@@ -39,10 +39,10 @@ function Login({ onCreateAccountClick, onPagePrincipaleClick }) {
     try {
       const response = await axios.post(`https://bombpartyback-8efp.onrender.com/api/users`, {
         email,
-        mdp: password,
-        recaptchaToken: recaptchaValue
+        mdp: password
+        
       });
-
+//recaptchaToken: recaptchaValue
       if (response.data.status === 200) {
         toast.success("Login validé");
         setTimeout(onPagePrincipaleClick, 500);
@@ -87,10 +87,10 @@ function Login({ onCreateAccountClick, onPagePrincipaleClick }) {
                 )}
               </span>
             </div>
-            <ReCAPTCHA
+            {/**<ReCAPTCHA
               sitekey="6LdtjdcqAAAAAJiQiqVsDxWDDVgDTH_hdzOgRzcP"
               onChange={handleRecaptchaChange}
-            />
+            />*/}
             <button type="submit" className="btn custom-btn w-100" onClick={handleLoginClick}>
               Se connecter
             </button>

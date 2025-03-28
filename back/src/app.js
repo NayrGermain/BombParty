@@ -45,14 +45,32 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log("Connexion à MongoDB réussie !"))
 .catch(err => console.error("Erreur MongoDB:", err));
 
-app.set('trust proxy', 1);
-
+//app.set('trust proxy', 1);
+/** 
 app.use(cors({
   origin: true,
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
-}));
+}));**/
+// Middleware CORS amélioré
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+  }
+  
+  // Répondre immédiatement aux requêtes OPTIONS (pré-vol)
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  
+  next();
+});
+
 
 // Middleware pour parser le JSON
 app.use(express.json());
@@ -129,7 +147,7 @@ app.use(express.static(path.join(__dirname, "../../front")));
 const api = apiRouter(mongoose.connection);
 app.use("/api", api);
 
-// Vérification du reCAPTCHA v2
+/**  Vérification du reCAPTCHA v2
 app.post("/verify-recaptcha", async (req, res) => {
   const { recaptchaToken } = req.body;
 
@@ -151,7 +169,7 @@ app.post("/verify-recaptcha", async (req, res) => {
   } catch (error) {
     res.status(500).json({ success: false, message: "Erreur serveur reCAPTCHA" });
   }
-});
+});**/
 app.get("/verify-word", async (req, res) => {
   try {
       //const db = client.db("dictionnaire");
