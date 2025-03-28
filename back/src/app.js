@@ -48,7 +48,7 @@ mongoose.connect(process.env.MONGO_URI, {
 app.set('trust proxy', 1);
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: true,
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
