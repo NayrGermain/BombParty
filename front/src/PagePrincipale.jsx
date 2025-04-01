@@ -30,7 +30,7 @@ function PagePrincipale({onUserClick, onLoginClick, setIsConnected, setCurrentPa
   const handleLogoutClick = async () => {
     try {
       //Envoie une requête à l'API pour détruire la session (le cookie)
-      await axios.post('https://bombpartyy.duckdns.org/api/logout');
+      await axios.post('https://bombpartyback.onrender.com/api/logout');
       
       //Met à jour l'état pour indiquer que l'utilisateur est déconnecté
       setIsConnected(false);
@@ -130,7 +130,7 @@ function PagePrincipale({onUserClick, onLoginClick, setIsConnected, setCurrentPa
 
   useEffect(() => {
     // 1) Ouvrir la connexion
-    const wsPublic = new WebSocket('wss://bombpartyy.duckdns.org/ws/');
+    const wsPublic = new WebSocket('wss://bombpartyback.onrender.com/ws/');
 
     wsPublic.onopen = () => {
       console.log("WS publicRooms connecté !");
