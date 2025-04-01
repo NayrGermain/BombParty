@@ -46,15 +46,15 @@ mongoose.connect(process.env.MONGO_URI, {
 
 //app.set('trust proxy', 1);
 
-app.use(cors({
+/**app.use(cors({
   origin: true,
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
-}));
+}));**/
 app.set('trust proxy', 1)
 // Middleware CORS amélioré
-const cors = require("cors");
+
 // Configuration propre de CORS
 const corsOptions = {
   origin: function (origin, callback) {
