@@ -28,7 +28,7 @@ function init(db){
     service: 'gmail',
     auth: {
       user: 'ryangermain.2004@gmail.com', 
-      pass: 'fwhv yqui iqjp sppb' 
+      pass: 'cjbk ypjq lxfs nytv' 
     }
   });
 
@@ -90,13 +90,13 @@ const validatePassword = (password) => {
     req.session.verificationCode = verificationCode;
     req.session.pendingUser = { pseudo, email, password: await encrypt.hashPassword(mdp1) };
   
-    try {/**
+    try {
       await transporter.sendMail({
         from: 'ryangermain.2004@gmail.com',
         to: email,
         subject: 'Code de vérification',
         text: `Votre code de vérification est : ${verificationCode}`
-      });**/
+      });
       res.status(200).send({ message: "Code envoyé avec succès" });
     } catch (error) {
       res.status(500).send({ message: "Erreur lors de l'envoi de l'email" });
