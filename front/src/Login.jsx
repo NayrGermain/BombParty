@@ -87,10 +87,10 @@ function Login({ onCreateAccountClick, onPagePrincipaleClick }) {
                 )}
               </span>
             </div>
-            {/**<ReCAPTCHA
-              sitekey="6LdtjdcqAAAAAJiQiqVsDxWDDVgDTH_hdzOgRzcP"
+            {<ReCAPTCHA
+              sitekey="6LcUnwYrAAAAAFmCOTGGuemC7zZpDoT-A2frVcXB"
               onChange={handleRecaptchaChange}
-            />*/}
+            />}
             <button type="submit" className="btn custom-btn w-100" onClick={handleLoginClick}>
               Se connecter
             </button>

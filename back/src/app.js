@@ -149,7 +149,7 @@ app.use(express.static(path.join(__dirname, "../../front")));
 const api = apiRouter(mongoose.connection);
 app.use("/api", api);
 
-/**  Vérification du reCAPTCHA v2
+/**  Vérification du reCAPTCHA v2*/
 app.post("/verify-recaptcha", async (req, res) => {
   const { recaptchaToken } = req.body;
 
@@ -158,7 +158,7 @@ app.post("/verify-recaptcha", async (req, res) => {
   }
 
   try {
-    const secretKey = "6LdtjdcqAAAAAGo9WtRV006GfNpedYFJS6Hlf5ed";
+    const secretKey = "6LcUnwYrAAAAAOERempH3DPsAoTAbxa_XUFZaB9Z";
     const verificationURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaToken}`;
 
     const { data } = await axios.post(verificationURL);
@@ -171,7 +171,7 @@ app.post("/verify-recaptcha", async (req, res) => {
   } catch (error) {
     res.status(500).json({ success: false, message: "Erreur serveur reCAPTCHA" });
   }
-});**/
+});
 app.get("/verify-word", async (req, res) => {
   try {
       //const db = client.db("dictionnaire");
