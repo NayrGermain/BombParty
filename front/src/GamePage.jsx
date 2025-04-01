@@ -64,7 +64,7 @@ const GamePage = ({setCurrentPage, initialLives, initialTime, livesLostThreshold
   useEffect(() => {
       console.log("Compte récupéré =", storedUID);
 
-      ws.current = new WebSocket("wss://bombpartyback-8efp.onrender.com");
+      ws.current = new WebSocket("wss://bombpartyback.onrender.com");
       ws.current.onopen = () => {
         console.log("WebSocket connecté !");
       };
@@ -143,7 +143,7 @@ const GamePage = ({setCurrentPage, initialLives, initialTime, livesLostThreshold
   // Fonction pour récupérer une séquence depuis l'API
   const generateSequence = async () => {
     try {
-      const response = await fetch("https://bombpartyback-8efp.onrender.com");
+      const response = await fetch("https://bombpartyback.onrender.com");
       const data = await response.json();
       setSequence(data.sequence);
       //On envoie la séquence pour les autres clients
@@ -217,7 +217,7 @@ const GamePage = ({setCurrentPage, initialLives, initialTime, livesLostThreshold
     if (gameOver) return; // Empêcher d'envoyer une réponse si la partie est déjà finie
   
     try {
-      const response = await fetch(`https://bombpartyback-8efp.onrender.com/verify-word?word=${inputValue}`);
+      const response = await fetch(`https://bombpartyback.onrender.com/verify-word?word=${inputValue}`);
       const data = await response.json();
   
       if (data.valid && inputValue.includes(sequence)) {

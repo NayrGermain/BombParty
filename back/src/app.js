@@ -16,7 +16,7 @@ const { MongoClient } = require("mongodb");
 const uri = "mongodb://127.0.0.1:27017";
 const client = new MongoClient(uri);
 */
-axios.defaults.baseURL = 'https://bombpartyback-8efp.onrender.com';
+axios.defaults.baseURL = 'https://bombpartyback.onrender.com';
 axios.defaults.withCredentials = true;
 const app = express();
 const port = 4001; // Port Express
@@ -29,7 +29,7 @@ const SESSION_SECRET = process.env.SESSION_SECRET || crypto.randomBytes(64).toSt
 const SESSION_MAX_AGE = process.env.SESSION_MAX_AGE ? parseInt(process.env.SESSION_MAX_AGE) : 1000 * 60 * 30;
 const allowedOrigins = [
   "https://bombparty-8efp.onrender.com", //URL Amplify
-  "https://bombpartyback-8efp.onrender.com"  // Backend EC2
+  "https://bombpartyback.onrender.com"  // Backend EC2
 ];
 
 if (!MONGO_URI) {
@@ -54,22 +54,23 @@ app.use(cors({
 }));
 app.set('trust proxy', 1)
 // Middleware CORS amélioré
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
-  }
-  
-  // Répondre immédiatement aux requêtes OPTIONS (pré-vol)
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200);
-  }
-  
-  next();
-});
+const cors = require("cors");
+// Configuration propre de CORS
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // Gérer les requêtes OPTIONS (préflight)
 
 
 // Middleware pour parser le JSON

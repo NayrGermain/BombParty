@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 //Connexion avec le back
-axios.defaults.baseURL = 'https://bombpartyback-8efp.onrender.com/';
+axios.defaults.baseURL = 'https://bombpartyback.onrender.com/';
 axios.defaults.withCredentials = true;
 
 //Page qui permet d'être sur la page principale

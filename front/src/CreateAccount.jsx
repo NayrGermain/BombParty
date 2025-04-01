@@ -66,7 +66,7 @@ function CreateAccount({ onLoginClick }) {
     const mdp2 = repassword;
   
     try {
-      const response = await axios.put('https://bombpartyback-8efp.onrender.com/api/users', { pseudo, email: emailVal, mdp1, mdp2 });
+      const response = await axios.put('https://bombpartyback.onrender.com/api/users', { pseudo, email: emailVal, mdp1, mdp2 });
       
       if (response.data.message === "Code envoyé avec succès") {
         setIsVerificationSent(true);

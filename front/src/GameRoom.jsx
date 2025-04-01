@@ -30,8 +30,8 @@ const GameRoom = ({ setCurrentPage}) => {  // <-- Ajout de setCurrentPage
     // Vérifier si une session est déjà ouverte
     const checkSession = async () => {
         try {
-            const response = await axios.get('https://bombpartyback-8efp.onrender.com/api/session');
-            const user = await axios.get('https://bombpartyback-8efp.onrender.com/api/users/detail');
+            const response = await axios.get('https://bombpartyback.onrender.com/api/session');
+            const user = await axios.get('https://bombpartyback.onrender.com/api/users/detail');
 
             console.log("find the user according to the session id : ");
             setUserid(response.data.userid);
@@ -44,8 +44,8 @@ const GameRoom = ({ setCurrentPage}) => {  // <-- Ajout de setCurrentPage
     async function fetchAccount() {
         try {
           const [response, sessionRes] = await Promise.all([
-            axios.get('https://bombpartyback-8efp.onrender.com/api/users/all'),
-            axios.get('https://bombpartyback-8efp.onrender.com/api/session')
+            axios.get('https://bombpartyback.onrender.com/api/users/all'),
+            axios.get('https://bombpartyback.onrender.com/api/session')
           ]);
           
           const userid = sessionRes.data.userid;
@@ -67,7 +67,7 @@ const GameRoom = ({ setCurrentPage}) => {  // <-- Ajout de setCurrentPage
     const connectWS = useCallback(() => {
         if (isWebSocketOpen.current) return;
         
-        ws.current = new WebSocket("wss://bombpartyback-8efp.onrender.com");
+        ws.current = new WebSocket("wss://bombpartyback.onrender.com");
 
         ws.current.onopen = () => {
             console.log("WebSocket connecté !");
@@ -262,7 +262,7 @@ const GameRoom = ({ setCurrentPage}) => {  // <-- Ajout de setCurrentPage
           await Promise.all(users.map(async (user) => {
             const username = user.id;
               try {
-                  const response = await axios.get('https://bombpartyback-8efp.onrender.com/api/get-avatar-by-username', {
+                  const response = await axios.get('https://bombpartyback.onrender.com/api/get-avatar-by-username', {
                       params: { username: username.trim() } // Normaliser le nom
                   });
                   if (response.data?.avatar) {
