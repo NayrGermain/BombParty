@@ -152,7 +152,6 @@ function PagePrincipale({onUserClick, onLoginClick, setIsConnected, setCurrentPa
     };
     // 3) Cleanup
     return () => {
-      wsPublic.close();
     };
   }, []);
 
