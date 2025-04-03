@@ -130,7 +130,7 @@ function PagePrincipale({onUserClick, onLoginClick, setIsConnected, setCurrentPa
 
   useEffect(() => {
     // 1) Ouvrir la connexion
-    const wsPublic = new WebSocket('wss://bombpartyback.onrender.com/ws/');
+    const wsPublic = new WebSocket('https://bombpartyback.onrender.com');
 
     wsPublic.onopen = () => {
       console.log("WS publicRooms connecté !");

@@ -64,7 +64,7 @@ const GamePage = ({setCurrentPage, initialLives, initialTime, livesLostThreshold
   useEffect(() => {
       console.log("Compte récupéré =", storedUID);
 
-      ws.current = new WebSocket("wss://bombpartyback.onrender.com");
+      ws.current = new WebSocket("https://bombpartyback.onrender.com");
       ws.current.onopen = () => {
         console.log("WebSocket connecté !");
       };
