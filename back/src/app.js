@@ -237,7 +237,14 @@ app.get("/random-sequence", async (req, res) => {
 });
 
 /* ************* WebSocket Server ************* */
-const wss = new WebSocket.Server({ port: wsPort, host: '0.0.0.0' });
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server }); // Même serveur pour HTTP et WS
+
+// Écoutez sur un seul port
+server.listen(port, () => {
+  console.log(`Serveur HTTP/WS démarré sur le port ${port}`);
+});
+//const wss = new WebSocket.Server({ port: wsPort, host: '0.0.0.0' });
 
 wss.on("connection", async (ws) => {
   //const db = client.db("DB");
@@ -649,9 +656,9 @@ wss.on("connection", async (ws) => {
 
 });
 
-app.listen(port, () => {
+/**app.listen(port, () => {
   console.log(`Serveur Express démarré sur le port ${port}`);
-});
+});**/
 
 console.log(`Serveur WebSocket à l'écoute sur le port ${wsPort}`);
 
