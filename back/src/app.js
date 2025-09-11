@@ -20,8 +20,8 @@ const client = new MongoClient(uri);
 axios.defaults.baseURL = 'https://bombpartyback.onrender.com';
 axios.defaults.withCredentials = true;
 const app = express();
-const port = process.env.Port; // Port Express
-const wsPort = process.env.Port; // Port WebSocket
+const port = process.env.PORT; // Port Express
+const wsPort = process.env.PORT; // Port WebSocket
 
 //Chargement des variables de .env
 require("dotenv").config();
