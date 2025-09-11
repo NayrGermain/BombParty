@@ -1,5 +1,5 @@
 const app = require("./app.js");
-const port = 4000;
+const port = process.env.PORT;
 
 //Activation du port
 app.listen(port, () => {
