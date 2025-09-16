@@ -143,7 +143,7 @@ const GamePage = ({setCurrentPage, initialLives, initialTime, livesLostThreshold
   // Fonction pour récupérer une séquence depuis l'API
   const generateSequence = async () => {
     try {
-      const response = await fetch("https://bombpartyback.onrender.com/random-sequence");
+      const response = await axios.get("https://bombpartyback.onrender.com/app/random-sequence");
       const data = await response.json();
       setSequence(data.sequence);
       //On envoie la séquence pour les autres clients
