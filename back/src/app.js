@@ -173,7 +173,7 @@ app.post("/verify-recaptcha", async (req, res) => {
 app.get("/verify-word", async (req, res) => {
   try {
       //const db = client.db("dictionnaire");
-      const db = mongoose.connection.useDb("ProjetAWS");
+      const db = mongoose.connection.useDb("BombPartyDB");
       const collection = db.collection("mots");
       
       const { word } = req.query;
@@ -213,7 +213,7 @@ app.post("/form-submit", (req, res) => {
 app.get("/random-sequence", async (req, res) => {
   try {
     //const db = client.db("dictionnaire");
-    const db = mongoose.connection.useDb("ProjetAWS");
+    const db = mongoose.connection.useDb("BombPartyDB");
     const collection = db.collection("mots");
 
     // Sélectionner un mot aléatoire
@@ -246,7 +246,7 @@ server.listen(port, () => {
 
 wss.on("connection", async (ws) => {
   //const db = client.db("DB");
-  const db = mongoose.connection.useDb("ProjetAWS");
+  const db = mongoose.connection.useDb("BombPartyDB");
   const collection = db.collection("Rooms");
   ws.on("message",async (message) => {
     const data = JSON.parse(message);
