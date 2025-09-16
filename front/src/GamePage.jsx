@@ -217,7 +217,7 @@ const GamePage = ({setCurrentPage, initialLives, initialTime, livesLostThreshold
     if (gameOver) return; // Empêcher d'envoyer une réponse si la partie est déjà finie
   
     try {
-      const response = await fetch(`https://bombpartyback.onrender.com/verify-word?word=${inputValue}`);
+      const response = await axios.get(`https://bombpartyback.onrender.com/api/verify-word?word=${inputValue}`);
       const data = await response.json();
   
       if (data.valid && inputValue.includes(sequence)) {
