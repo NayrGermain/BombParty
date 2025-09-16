@@ -38,10 +38,7 @@ if (!MONGO_URI) {
   process.exit(1); // Arrête le serveur
 }
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect(MONGO_URI)
 .then(() => console.log("Connexion à MongoDB réussie !"))
 .catch(err => console.error("Erreur MongoDB:", err));
 
@@ -656,10 +653,6 @@ wss.on("connection", async (ws) => {
   }
 
 });
-
-/**app.listen(port, () => {
-  console.log(`Serveur Express démarré sur le port ${port}`);
-});**/
 
 console.log(`Serveur WebSocket à l'écoute sur le port ${wsPort}`);
 
