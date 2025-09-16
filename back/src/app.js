@@ -50,6 +50,18 @@ mongoose.connect(MONGO_URI)
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));**/
+
+app.use(session({
+  secret: 'secret_key', 
+  resave: false,
+  saveUninitialized: true,
+  cookie: { 
+    maxAge: 60000,
+    secure: true,        // Ajoute ça
+    sameSite: 'none'     // Ajoute ça
+  }
+}));
+
 app.set('trust proxy', 1)
 // Middleware CORS amélioré
 

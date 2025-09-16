@@ -97,7 +97,7 @@ function PagePrincipale({onUserClick, onLoginClick, setIsConnected, setCurrentPa
 
   const fetchPublicRooms = async () => {
     try {
-      const response = await axios.get('https://bombpartyback.onrender.com/api/roomspublic');
+      const response = await axios.get('https://bombpartyback.onrender.com/api/rooms/public');
       setPublicRooms(response.data);
     } catch (error) {
       toast.error('Erreur lors du chargement des salles');

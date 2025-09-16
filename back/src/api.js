@@ -14,14 +14,6 @@ function init(db){
   // Initialisation des entités
   const users = new Users.default(db);
   const rooms = new Rooms.default(db);
-  
-  // Configuration de la session
-  router.use(session({
-    secret: 'secret_key', 
-    resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 60000 }
-  }));
 
   // Transporter pour envoyer les emails
   const transporter = nodemailer.createTransport({
@@ -166,8 +158,8 @@ const validatePassword = (password) => {
   });
 
   // Récupérer toutes les salles publiques
-  router.get('/roomspublic', async (req, res) => {
-    console.log("[DEBUG] Appel à /api/roomspublic");
+  router.get('/rooms/public', async (req, res) => {
+    console.log("[DEBUG] Appel à /api/rooms/public");
     try {
       const showRoom = await rooms.getAllRooms();
       console.log("[DEBUG] Salles récupérées:", showRoom);
