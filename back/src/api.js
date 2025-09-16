@@ -166,14 +166,14 @@ const validatePassword = (password) => {
   });
 
   // Récupérer toutes les salles publiques
-  router.get('/rooms/public', async (req, res) => {
-    console.log("[DEBUG] Appel à /api/rooms/public");
+  router.get('/roomspublic', async (req, res) => {
+    console.log("[DEBUG] Appel à /api/roomspublic");
     try {
       const showRoom = await rooms.getAllRooms();
       console.log("[DEBUG] Salles récupérées:", showRoom);
       res.status(200).json(showRoom);
     } catch (error) {
-      console.error("[ERREUR] /rooms/public:", error.message);
+      console.error("[ERREUR] /roomspublic:", error.message);
       res.status(500).json({ error: error.message });
     }
   });
